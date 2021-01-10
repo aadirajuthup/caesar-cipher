@@ -1,9 +1,7 @@
 alpha = "abcdefghijklmnopqrstuvwxyz"
 ALPHA = alpha.upper()
-key = -13
 
-def cipher(text):
-	key = 13
+def cipher(text, key):
 	enc_txt = ""
 	for char in text:
 		if char.isupper() == True:
@@ -18,8 +16,7 @@ def cipher(text):
 			enc_txt += char
 	return enc_txt
 
-def decipher(text):
-	key = -13
+def decipher(text, key):
 	dec_txt = ""
 	for char in text:
 		if char.isupper() == True:
@@ -34,6 +31,10 @@ def decipher(text):
 			dec_txt += char
 	return dec_txt
 
-while True:
-	raw_txt = input("Enter text: ")
-	print("Encrypted: ", cipher(raw_txt), " | Decrypted: ", decipher(cipher(raw_txt)), "\n")
+def main():
+	text = input("Enter Text: ")
+	key = int(input("Enter Key: "))
+	print("Encrypted: ", cipher(text, key), " | Decrypted: ", decipher(cipher(text, key), (abs(key)) * -1), "\n")
+
+if __name__ == "__main__":
+	main()
